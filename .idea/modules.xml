@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/allmaan.iml" filepath="$PROJECT_DIR$/.idea/allmaan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/allmaan-client.iml" filepath="$PROJECT_DIR$/.idea/allmaan-client.iml" />
     </modules>
   </component>
 </project>
