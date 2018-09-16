@@ -1,3 +1,39 @@
+@import "config/colors";
+@import "config/dimens";
+
 .App {
-  background-color: #212326;
+  background-color: $color-gray;
+  display: flex;
+  flex-direction: column;
+
+  $header-height: 60px;
+  .header {
+    position: relative;
+    height: $header-height;
+    background-color: $color-orange;
+
+    img {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 12px;
+      margin: auto;
+      height: $height-l;
+    }
+
+    i {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 12px;
+      margin: auto;
+      line-height: $header-height;
+      font-size: $icon-l;
+      color: $color-gray;
+    }
+  }
+
+  .container {
+    flex: 1;
+  }
 }

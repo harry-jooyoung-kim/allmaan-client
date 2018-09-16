@@ -1,6 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {push} from 'react-router-redux';
 import './Login.scss';
-import logo from './Image/logo.png';
+import logo from '../../image/logo.png';
 class Login extends React.PureComponent{
     render() {
      return <div className="log-in">
@@ -8,7 +10,7 @@ class Login extends React.PureComponent{
          <img className="logo" src={logo}/>
          <input className="input-container" placeholder="이메일"/>
              <input className="input-container" placeholder="비밀번호"/>
-         <button className="btn-clear btn-login">
+         <button className="btn-clear btn-login" onClick={e => this.props.push('/main')}>
              로그인
          </button>
      </div>
@@ -16,4 +18,10 @@ class Login extends React.PureComponent{
     }
 }
 
-export default Login
+const mapStateToProps = (state, ownProps) => {
+
+};
+
+export default connect(mapStateToProps, {
+  push
+})(Login)
