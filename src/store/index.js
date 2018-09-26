@@ -15,6 +15,8 @@ const logicDependancies = {
 };
 
 const logicMiddleware = createLogicMiddleware([
+  ...require('../auth/authLogics').default,
+  ...require('../user/userLogics').default
 ], logicDependancies);
 
 export const history = createHistory();
@@ -31,7 +33,8 @@ const reducer = persistReducer({
   storage: localForage,
   whitelist: [],
 }, combineReducers({
-  app: (state = {}, action) => state
+  auth: require('../auth/authStore').authReducer,
+  user: require('../user/userStore').userReducer
 }));
 
 const store = createStore(
