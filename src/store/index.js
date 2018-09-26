@@ -24,13 +24,14 @@ const middleware = applyMiddleware(
   routerMiddleware(history),
 );
 
-const enhancer = composeEnhancers(middleware);
+const enhancer = compose(middleware);
 
 const reducer = persistReducer({
   key: 'root',
   storage: localForage,
   whitelist: [],
 }, combineReducers({
+  app: (state = {}, action) => state
 }));
 
 const store = createStore(
