@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {PersistGate} from 'redux-persist/es/integration/react'
 import './App.scss';
 import Login from './login/components/Login.js';
+import Join from './join/components/Join.js';
 import {persistor, history} from './store';
 import {push} from 'react-router-redux';
 import store from './store';
@@ -12,7 +13,7 @@ import {
   ConnectedRouter
 } from 'react-router-redux';
 import Main from "./main/components/Main";
-const headerLogo = require('./image/headerlogo.png');
+const headerLogo = require('./image/header-logo2.png');
 
 class App extends Component {
   render() {
@@ -26,6 +27,7 @@ class App extends Component {
           <div className="container">
             <Switch>
               <Route path="/login" component={Login}/>
+                <Route path="/join" component={Join}/>
               <Route path="/main" component={Main}/>
             </Switch>
           </div>
