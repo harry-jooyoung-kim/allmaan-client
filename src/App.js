@@ -16,18 +16,39 @@ import Main from "./main/components/Main";
 const headerLogo = require('./image/header-logo2.png');
 
 class App extends Component {
+  state = {
+    menuBarShow: false
+
+  };
   render() {
+    console.log(this.state.menuBarShow);
+
     return (
       <div className="App">
         <div className="header">
           <img className="btn-hover" src={headerLogo} onClick={e => this.props.push('/login')}/>
-          <i className="icon ion-navicon-round btn-hover"/>
+          <i className="icon ion-navicon-round btn-hover" onClick={e => {
+            this.setState({
+                menuBarShow: !this.state.menuBarShow
+            });
+          }} />
+          <div className={`menu-bar ${this.state.menuBarShow ? 'show' : ''}`} onClick={e => {
+            this.setState({
+                menuBarShow: !this.state.menuBarShow
+            })
+          }}>
+            <div className={"menu-bar-container"} onClick={ e => {
+              e.stopPropagation();
+            }}>
+              Menu Bar
+            </div>
+         </div>
         </div>
         <ConnectedRouter history={history}>
           <div className="container">
             <Switch>
               <Route path="/login" component={Login}/>
-                <Route path="/join" component={Join}/>
+              <Route path="/join" component={Join}/>
               <Route path="/main" component={Main}/>
             </Switch>
           </div>

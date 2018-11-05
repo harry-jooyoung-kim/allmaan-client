@@ -1,3 +1,34 @@
-.main {
+@import "../../config/dimens" ;
 
+.main {
+  width : 100% ;
+  height : 100% ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .calendar{
+    background-color : white ;
+    border-radius : 8px ;
+    .calendar-header{
+      height : $height-xl ;
+      font-size : $font-xl ;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .calendar-body{
+      .calendar-row{
+        display : flex ;
+
+        .calendar-day{
+          width: 100px ;
+          height: 100px ;
+          padding : 10px ;
+        }
+      }
+    }
+
+
+  }
 }
