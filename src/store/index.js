@@ -9,6 +9,7 @@ import localForage from 'localforage';
 import createHistory from 'history/createBrowserHistory';
 
 import {routerReducer, routerMiddleware} from 'react-router-redux';
+import {authActionCreators} from "../auth/authStore";
 
 const logicDependancies = {
   http,

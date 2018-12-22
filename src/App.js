@@ -7,21 +7,38 @@ import './App.scss';
 import Login from './login/components/Login.js';
 import Join from './join/components/Join.js';
 import {persistor, history} from './store';
+import _ from 'lodash';
 import {push} from 'react-router-redux';
 import store from './store';
 import {
   ConnectedRouter
 } from 'react-router-redux';
+import {firebaseInit} from './firebase';
 import Main from "./main/components/Main";
+import {authActionCreators} from "./auth/authStore";
 const headerLogo = require('./image/header-logo2.png');
+
+const firebase = require('firebase');
 
 class App extends Component {
   state = {
     menuBarShow: false
   };
 
+  async componentDidMount() {
+    const {updateAdmin} = this.props;
+
+    firebase.auth().onAuthStateChanged(user => {
+      if(user) {
+        updateAdmin({user});
+      } else {
+        /// logout
+        updateAdmin({user: null});
+      }
+    });
+  }
+
   render() {
-    console.log(this.state.menuBarShow);
 
     return (
       <div className="App">
@@ -58,7 +75,10 @@ class App extends Component {
   }
 }
 
-const ConnectedApp = connect(undefined, {push})(App);
+const ConnectedApp = connect(undefined, {
+  push,
+  ..._.pick(authActionCreators, ['updateAdmin'])
+})(App);
 
 export default () => <Provider store={store}>
   <PersistGate persistor={persistor}>
